@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+
+	"github.com/TirushV/tempDB/db"
 )
 
 func SetKeyHandler(w http.ResponseWriter, r *http.Request) {
@@ -29,8 +31,7 @@ func GetKeyHandler(w http.ResponseWriter, r *http.Request) {
 	key := strings.TrimPrefix(r.URL.Path, "/get/")
 	value, exists := db.GetKeyValue(key) // Use db package functions
 	if exists {
-		response := map[string]string{key: value}
-		json.NewEncoder(w).Encode(response)
+		json.NewEncoder(w).Encode(value) // Return only the value
 	} else {
 		http.NotFound(w, r)
 	}
