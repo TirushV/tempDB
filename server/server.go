@@ -31,7 +31,7 @@ func GetKeyHandler(w http.ResponseWriter, r *http.Request) {
 	key := strings.TrimPrefix(r.URL.Path, "/get/")
 	value, exists := db.GetKeyValue(key) // Use db package functions
 	if exists {
-		json.NewEncoder(w).Encode(value) // Return only the value
+		w.Write([]byte(value)) // Write the value as a plain string response
 	} else {
 		http.NotFound(w, r)
 	}
