@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"sort"
 	"strings"
 
 	"github.com/TirushV/tempDB/db"
@@ -43,6 +44,9 @@ func SearchKeysHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Use db package functions
 	filteredKeys := db.SearchKeysByPrefixSuffix(prefix, suffix)
+
+	// Sort the keys alphabetically
+	sort.Strings(filteredKeys)
 
 	response := map[string][]string{"keys": filteredKeys}
 	json.NewEncoder(w).Encode(response)
