@@ -1,15 +1,6 @@
-FROM golang:1.16 as modules
-WORKDIR /app
-COPY go.mod go.sum ./
-RUN go mod download
-
-FROM golang:1.16 as builder
+FROM golang:1.20
 WORKDIR /app
 COPY . .
-RUN go build -o tempDB
-
-FROM alpine:latest
-WORKDIR /app
-COPY --from=builder /app/tempDB .
+RUN go build -o main
 EXPOSE 8080
-CMD ["./tempDB"]
+CMD ["./main"]

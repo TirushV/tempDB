@@ -93,7 +93,6 @@ curl "http://localhost:8080/search?suffix=-1"
 
 ## Monitoring with Prometheus
 This service includes Prometheus monitoring for latency, HTTP status codes, and the total number of keys in the database. You can access the Prometheus dashboard at http://localhost:8080/metrics.
-(Yet to update this)
 
 ** Metrics to watch for
 - total_keys_in_db
