@@ -36,3 +36,9 @@ func SearchKeysByPrefixSuffix(prefix, suffix string) []string {
 	}
 	return filteredKeys
 }
+
+func GetTotalKeys() int {
+	mu.Lock()
+	defer mu.Unlock()
+	return len(keyValueStore)
+}
