@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: tempDB
-        image: your-docker-image:latest
+        image: <image_name/uri>:latest
         ports:
         - containerPort: 8080

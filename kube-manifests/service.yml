@@ -1,16 +1,12 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
   name: tempDB
 spec:
-  rules:
-  - host: your-domain.com # Replace with your domain
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: tempDB
-            port:
-              number: 8080
+  selector:
+    app: tempDB
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
