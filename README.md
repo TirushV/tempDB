@@ -99,6 +99,11 @@ This service includes Prometheus monitoring for latency, HTTP status codes, and 
 - http_status_codes_total
 - http_request_duration_seconds
 
+## Roadmap (To implement)
+
+- Consensus algorithm (Raft logic) & Restore logic
+- Improve Scalability, High availability & Durability
+
 Contributing
 Contributions are welcome! Please read the Contributing Guidelines for details.
 
